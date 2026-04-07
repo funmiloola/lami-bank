@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function SidebarClient() {
   const [openSidebar, setOpenSidebar] = useState(false);
   return (
-    <section className="bg-white md:bg-[#101928] font-sans h-screen pt-6 md:px-6">
+    <section className="bg-white md:bg-[#101928] font-sans h-screen pt-6 ">
       <aside className="block md:hidden" onClick={() => setOpenSidebar(true)}>
         <img
           src="/hamburger-menu-more-svgrepo-com (1).svg"
@@ -27,10 +27,10 @@ export default function SidebarClient() {
           />
         </div>
 
-        <header className="pt-20">
+        <header className="pt-20 md:pt-0 px-4">
           <img src="/image 6.svg" alt="" className="" />
         </header>
-        <ul className="flex flex-col gap-5 pt-5 md:pt-10">
+        <ul className="flex flex-col gap-5 pt-5 md:pt-10 px-4">
           <li className="flex gap-3 items-center cursor-pointer">
             <img src="/home.svg" alt="home-icon" />
             <span className="text-white font-inter font-semibold text-sm block md:hidden lg:block">
