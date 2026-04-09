@@ -12,7 +12,7 @@ import ClientVerification from './pages/ClientVerification'
 import Signup from './pages/Signup'
 import { ProtectedRoute } from './components/Protected'
 import { ToastContainer } from 'react-toastify'
-
+import NotFound from './components/Notfound'
 function App() {
   
   return (
@@ -35,7 +35,8 @@ function App() {
           <Route index element={<ClientSection />} />
           <Route path='c-v-queue' element={<ClientVerification/>}/>
           </Route>
-          </Route>
+        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       </BrowserRouter>
      

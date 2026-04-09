@@ -11,11 +11,8 @@ useEffect(() => {
   const loadModelsAndStart = async () => {
     try {
       const MODEL_URL = '/model';
-      console.log("Loading models...");
       await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
       await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
-      
-      console.log("Models loaded. Requesting camera...");
       setModelsLoaded(true);
       const stream = await navigator.mediaDevices.getUserMedia({ 
         video: { width: 640, height: 480 } 
@@ -88,7 +85,7 @@ useEffect(() => {
               className="absolute object-cover w-full h-full rounded-full border-4 border-[#407BFF]" 
             />
             
-            <img src="/Facial ID.svg" className="absolute z-20 pointer-events-none w-full" alt="overlay" />
+          {modelsLoaded ? '' : (<img src="/Facial ID.svg" className="absolute z-20 pointer-events-none w-full" alt="overlay" />)}  
         </div>
       </div>
 

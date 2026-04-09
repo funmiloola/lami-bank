@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { TiTick } from "react-icons/ti";
-export default function BVNSection({nextStep}) {
-  
+export default function BVNSection({ nextStep }) {
   const {
     register,
     handleSubmit,
@@ -21,7 +20,6 @@ export default function BVNSection({nextStep}) {
         <label className="flex flex-col gap-1 pt-12">
           <input
             type="text"
-            inputMode="numeric"
             placeholder="Please enter your BVN"
             maxLength={11}
             className="border border-[#D5D7DA] px-2 py-6 rounded-lg outline-none appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
@@ -31,6 +29,10 @@ export default function BVNSection({nextStep}) {
                 value: 11,
                 message: "BVN must be 11 digits",
               },
+              pattern: {
+      value: /^[0-9]*$/,
+      message: "Only numbers are allowed"
+    }
             })}
           />
           {errors.bvn && (
