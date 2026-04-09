@@ -36,9 +36,10 @@ export default function Sidebar() {
         </header>
         <div className="pt-6 flex flex-col justify-between h-[96%]">
           <ul className="flex flex-col gap-5 ">
-            <Link to="/dashboard">
+            <Link to="/admin-dashboard">
               <li
-                className={`flex gap-3 items-center py-2 px-4 ${location.pathname === "/dashboard" ? "bg-[#1D2739]" : ""}`}
+                onClick={()=>setOpenSidebar(false)}
+                className={`flex gap-3 items-center py-2 px-4 ${location.pathname === "/admin-dashboard" ? "bg-[#1D2739]" : "hover:bg-gray-700"}`}
               >
                 <img src="/home.svg" alt="home-icon" />
                 <span className="text-white font-inter font-semibold text-sm block md:hidden lg:block">
@@ -47,8 +48,8 @@ export default function Sidebar() {
               </li>
             </Link>
             <Link to="v-queue">
-              <li
-                className={`flex gap-3 items-center py-2 px-4  ${location.pathname.includes("v-queue") ? "bg-[#1D2739]" : ""}`}
+              <li onClick={()=>setOpenSidebar(false)}
+                className={`flex gap-3 items-center py-2 px-4  ${location.pathname.includes("v-queue") ? "bg-[#1D2739]" : "hover:bg-gray-700"}`}
               >
                 <img src="/icon.svg" alt="verification-icon" />
                 <span className="text-white font-inter font-semibold text-sm block md:hidden lg:block">

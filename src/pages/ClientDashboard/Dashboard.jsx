@@ -31,7 +31,7 @@ export default function Dashboard() {
   return (
     <section>
       <div className="bg-[#101928] border my-3.75 mx-3.5 rounded-lg font-sans px-5.75">
-        <Header className={`text-white`} />
+        <Header className={`text-white hover:text-gray-300`} />
         <div className="pt-6 pb-4">
           <HeaderSection>
             <div className=" flex gap-4 items-center">

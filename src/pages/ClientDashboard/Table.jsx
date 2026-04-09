@@ -61,7 +61,7 @@ export default function Table() {
               />
             </div>
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 border border-[#E2E4E9] p-2 rounded-[8px] cursor-pointer">
+              <div className="flex items-center gap-2 border border-[#E2E4E9] hover:bg-gray-200 p-2 rounded-[8px] cursor-pointer">
                 <img src="/Vector (26).svg" alt="filter-icon" />
                 <span>Filter</span>
                 <img src="/Vector (27).svg" alt="dropdown-icon" />

@@ -11,6 +11,7 @@ export default function Address({ nextStep }) {
   const [value, setValue] = useState("Select Document Type");
   const inputRef = useRef(null);
   const [file, setFile] = useState(null);
+  const cameraInputRef = useRef(null);
   const [dragging, setDragging] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [error, setError] = useState("");
@@ -41,7 +42,9 @@ export default function Address({ nextStep }) {
   };
   return (
     <section className="pt-15 font-sans">
-      <h2 className="text-[24px] mid:text-[32px] font-semibold">Verify your address</h2>
+      <h2 className="text-[24px] mid:text-[32px] font-semibold">
+        Verify your address
+      </h2>
       <p className="text-base text-[#566268]">
         Upload a document that shows your residential address
       </p>
@@ -140,10 +143,18 @@ export default function Address({ nextStep }) {
             </div>
           )}
         </div>
-        <div className="flex font-semibold gap-4 items-center py-4.75 pl-5.25 border border-[#D9D9D9] rounded-lg mt-8">
+        <div className="flex font-semibold gap-4 items-center py-4.75 pl-5.25 border border-[#D9D9D9] rounded-lg mt-8" onClick={()=> cameraInputRef.current.click()}>
           <img src="/camera.svg" alt="" />
           <p>Take a photo instead</p>
         </div>
+        <input
+          ref={cameraInputRef}
+          type="file"
+          accept="image/*"
+          capture="environment" 
+          className="hidden"
+          onChange={(e) => handleFile(e.target.files[0])}
+        />
         <div className="flex justify-center items-center pt-22 pb-10">
           <button
             onClick={handleContinue}

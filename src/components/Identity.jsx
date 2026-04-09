@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
+import {toast} from 'react-toastify'
 import { TiTick } from "react-icons/ti";
-export default function Identity({nextStep}) {
+export default function Identity({ nextStep }) {
   const verification = [
     { type: "radio", name: "Driver’s License", img: "/image 2.svg" },
     { type: "radio", name: "National ID Card", img: "/image 3.svg" },
@@ -9,19 +10,28 @@ export default function Identity({nextStep}) {
   ];
   const [selected, setSelected] = useState(null);
   const fileInputRef = useRef(null);
-  // const handleContinue = () => {
-  //   if (!selected) return;
-  //   fileInputRef.current.click();
-   
-  // };
-  // const handleFileChange = (e) => {
-  //   const file = e.target.files[0];
-  //   console.log(file);
-  // };
+  const [uploadedFile, setUploadedFile] = useState(null);
+  const handleContinue = () => {
+    if (!selected) {
+      toast.error("Please select an ID type first")
+      return;
+    }  
+    fileInputRef.current.click();
+  };
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setUploadedFile(file);
+      toast.success("ID Uploaded Successfully!")
+      nextStep()
+    };
 
+  }
   return (
     <section className="font-sans">
-      <h2 className="text-[24px] mid:text-[32px] pt-15 font-semibold">Select your ID Card</h2>
+      <h2 className="text-[24px] mid:text-[32px] pt-15 font-semibold">
+        Select your ID Card
+      </h2>
       <p className="text-[#566268] text-base">
         Choose one government-issued ID that you have available. All options are
         equally secure.
@@ -43,9 +53,7 @@ export default function Identity({nextStep}) {
               <div
                 className={`flex items-center justify-center w-6 h-6 border rounded-full ${selected === v.name ? "bg-blue-500 border-blue-500" : "bg-white border-gray-300"}`}
               >
-                {selected === v.name && (
-                  <img src="/Icon (8).svg"/>
-                )}
+                {selected === v.name && <img src="/Icon (8).svg" />}
               </div>
               <p className="text-[20px] font-semibold">{v.name}</p>
             </div>
@@ -53,22 +61,25 @@ export default function Identity({nextStep}) {
           </div>
         ))}
       </div>
-      <div className="flex items-center justify-center pt-18">
+      {uploadedFile && (
+        <p>{ uploadedFile.name}</p>
+      )}
+      <div className="flex items-center justify-center pt-18 pb-8">
         <button
           className="bg-[#407BFF] text-[#FFFFFF] border px-10 mid:px-20 py-3  rounded-lg font-semibold cursor-pointer"
-          onClick={nextStep}
+          onClick={handleContinue}
         >
           Continue with {selected || "ID"} License
         </button>
       </div>
-      {/* <input
+       <input
         ref={fileInputRef}
         type="file"
         accept="image/*"
         capture="environment"
         onChange={handleFileChange}
         className="hidden"
-      /> */}
+      /> 
     </section>
   );
 }

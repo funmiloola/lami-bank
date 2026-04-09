@@ -8,24 +8,37 @@ import Verification from './pages/Verified'
 import VerificationQueue from './pages/Verification'
 import ClientSection from './pages/ClientDashboard'
 import Client from './pages/Client'
+import ClientVerification from './pages/ClientVerification'
+import Signup from './pages/Signup'
+import { ProtectedRoute } from './components/Protected'
+import { ToastContainer } from 'react-toastify'
+
 function App() {
   
   return (
+    
     <BrowserRouter>
+      <ToastContainer position="top-center" autoClose={2000}/>
       <Routes>
-        <Route path="/" element={<Onboard />} />
+        <Route path="/" element={<Signup />} />
+        <Route path="/onboarding" element={<Onboard/>}/>
         <Route path="/verification/:step" element={<BVN />} />
         <Route path="/verification-successful" element={<Verification />} />
-        <Route path="/dashboard" element={<DashboardSection />}>
+        <Route element={<ProtectedRoute allowedRoles={['category_a']} />}>
+        <Route path="/admin-dashboard" element={<DashboardSection />}>
           <Route index element={<DashboardView />} />
           <Route path='v-queue' element={<VerificationQueue/>}/>
         </Route>
-        <Route path='/client-dashboard' element={<Client/>}>
-           <Route index element={<ClientSection/>}/>
         </Route>
+        <Route element={<ProtectedRoute allowedRoles={['category_b']}/>}>
+        <Route path='/dashboard' element={<Client/>}>
+          <Route index element={<ClientSection />} />
+          <Route path='c-v-queue' element={<ClientVerification/>}/>
+          </Route>
+          </Route>
       </Routes>
+      </BrowserRouter>
      
-    </BrowserRouter>
   )
 }
 

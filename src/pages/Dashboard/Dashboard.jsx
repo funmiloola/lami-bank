@@ -30,10 +30,10 @@ export default function Dashboard() {
     },
   ];
   return (
-    <section className="px-8 pt-6 font-sans">
+    <section className="px-8  pt-6 font-sans">
       <div className="flex justify-between items-center">
-        <h1 className="text-[24px] font-bold">Dashboard</h1>
-        <div className="flex items-center border border-[#D0D5DD] gap-3 py-2.5 px-4.75 rounded-[5px] cursor-pointer">
+        <h1 className="text-[18px] md:text-[24px] font-bold">Dashboard</h1>
+        <div className="flex items-center border border-[#D0D5DD] gap-3 py-2.5 px-4.75 rounded-[5px] cursor-pointer hover:bg-gray-200">
           <p>This week</p>
           <img src="/Vector (23).svg" alt="arrow-icon" />
         </div>
@@ -49,9 +49,15 @@ export default function Dashboard() {
               {c.total}
             </p>
             <div className="flex items-center gap-1 ">
-                    <div className={`flex gap-1  px-1 border rounded-xl ${c.name === "Incomplete/Failed Verification" ? "border-[#FFDFE9] bg-[#FFDFE9]" : "border-[#1CA8941A] bg-[#1CA8941A]"}`}>
+              <div
+                className={`flex gap-1  px-1 border rounded-xl ${c.name === "Incomplete/Failed Verification" ? "border-[#FFDFE9] bg-[#FFDFE9]" : "border-[#1CA8941A] bg-[#1CA8941A]"}`}
+              >
                 <img src={c.icon} alt="" />
-                        <span className={` font-medium text-xs ${c.name === "Incomplete/Failed Verification" ? "text-[#EE606B]" : "text-[#1CA894]"}`}>{c.percentage}</span>
+                <span
+                  className={` font-medium text-xs ${c.name === "Incomplete/Failed Verification" ? "text-[#EE606B]" : "text-[#1CA894]"}`}
+                >
+                  {c.percentage}
+                </span>
               </div>
               <p className="text-xs font-medium text-[#98A2B3]">{c.desc}</p>
             </div>
