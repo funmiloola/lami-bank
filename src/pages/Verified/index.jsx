@@ -14,12 +14,12 @@ export default function Verification() {
         />
       </div>
 
-      <h2 className="text-[32px] font-semibold">Verification Successful!</h2>
+      <h2 className="text-[24px] md:text-[32px] font-semibold">Verification Successful!</h2>
       <p className="text-[#566268] text-base">
         Your Tier 3 account is being activated
       </p>
-      <div className="bg-[#F5F9FF] py-6 px-2 rounded-[12px] w-[614px] mt-12 mb-4">
-        <div className="flex items-center gap-4 pb-6">
+      <div className="bg-[#F5F9FF] py-6 px-2 rounded-[12px] w-[340px] md:w-[614px] mt-12 mb-4">
+        <div className="flex  items-center gap-4 pb-6">
           <div className="w-5 h-5 bg-[#46CC5C] rounded-full  flex flex-col  items-center justify-center text-white text-xs">
             <img src="/Mark-sign" alt="" />
             <div className="w-px h-20 bg-[#A1AEBE]"></div>
@@ -50,13 +50,15 @@ export default function Verification() {
           </div>
         </div>
       </div>
-      <p className="font-semibold text-[20px] text-[#566268]">
+      <p className="font-semibold text-base md:text-[20px] text-[#566268]">
         Reference Number:{" "}
-        <span className="text-[#171C27] font-bolds pl-12">VRF-20250923458</span>
-          </p>
-          <div className="py-18">
-              <button className="bg-[#407BFF] text-white rounded-lg px-50 py-2.5 cursor-pointer ">Continue to Dashboard</button>
-          </div>
+        <span className="text-[#171C27] font-bold pl-0 md:pl-12">VRF-20250923458</span>
+      </p>
+      <div className="py-18">
+        <button className="bg-[#407BFF] text-white rounded-lg px-18 md:px-50 py-2.5 cursor-pointer ">
+          Continue to Dashboard
+        </button>
+      </div>
     </section>
   );
 }

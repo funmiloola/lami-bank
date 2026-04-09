@@ -114,8 +114,8 @@ export default function Address({ nextStep }) {
             <div className="pt-8">
               <div className="pb-2">
                 <h4>File added</h4>
-                <div className="flex  gap-3 items-center pt-3">
-                  <div className="flex justify-between gap-70 items-center border border-[#407BFF] rounded-lg py-2.25 px-2.5">
+                <div className="flex flex-col items-start md:flex-row gap-3 md:items-center pt-3">
+                  <div className="flex  justify-between gap-20 md:gap-70 items-center border border-[#407BFF] rounded-lg py-2.25 px-2.5">
                     <span>{file.name}</span>
                     <img
                       src="/Delete.svg"
