@@ -66,7 +66,7 @@ export default function Identity({ nextStep }) {
       )}
       <div className="flex items-center justify-center pt-18 pb-8">
         <button
-          className="bg-[#407BFF] text-[#FFFFFF] border px-10 mid:px-20 py-3  rounded-lg font-semibold cursor-pointer"
+          className="bg-[#407BFF] text-[#FFFFFF] border px-5 mid:px-20 py-3  rounded-lg font-semibold cursor-pointer"
           onClick={handleContinue}
         >
           Continue with {selected || "ID"} License

@@ -8,6 +8,7 @@ export default function BVNSection({ nextStep }) {
     formState: { errors },
   } = useForm();
   const bvnValue = watch("bvn");
+  
   return (
     <section className="font-sans">
       <h1 className="font-semibold text-[24px] mid:text-[32px] pt-10">
@@ -19,9 +20,8 @@ export default function BVNSection({ nextStep }) {
       <form onSubmit={handleSubmit(nextStep)}>
         <label className="flex flex-col gap-1 pt-12">
           <input
-            type="text"
+            type="number"
             placeholder="Please enter your BVN"
-            maxLength={11}
             className="border border-[#D5D7DA] px-2 py-6 rounded-lg outline-none appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             {...register("bvn", {
               required: "BVN is required",
@@ -29,11 +29,14 @@ export default function BVNSection({ nextStep }) {
                 value: 11,
                 message: "BVN must be 11 digits",
               },
-              pattern: {
-      value: /^[0-9]*$/,
-      message: "Only numbers are allowed"
-    }
+              
             })}
+            onInput={(e) => {
+    if (e.target.value.length > 11) {
+      e.target.value = e.target.value.slice(0, 11);
+    }
+  }}
+           
           />
           {errors.bvn && (
             <span className="text-red-500 text-sm">{errors.bvn.message}</span>
