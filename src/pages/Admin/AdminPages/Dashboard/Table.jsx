@@ -1,4 +1,4 @@
-import Page from "../../components/Pagination";
+import Page from "../../../../components/Pagination";
 const applicants = [
   {
     name: "Oluwatobi Adeyemi",

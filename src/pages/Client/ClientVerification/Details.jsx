@@ -1,5 +1,5 @@
-import Header from "../../components/HeaderClient";
-import HeaderSection from "../../components/Header";
+import Header from "../../../components/HeaderClient";
+import HeaderSection from "../../../components/Header";
 
 const metrics = [
   {

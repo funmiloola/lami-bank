@@ -1,5 +1,5 @@
-import HeaderSection from "../../components/Header";
-import Header from "../../components/HeaderClient";
+import HeaderSection from "../../../components/Header";
+import Header from "../../../components/HeaderClient";
 
 export default function Dashboard() {
   const stats = [
