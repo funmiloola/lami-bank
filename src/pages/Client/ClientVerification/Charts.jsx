@@ -1,82 +1,109 @@
 import {
-  LineChart,
-  Line,
+  AreaChart,
+  Area,
   XAxis,
+  YAxis,
+  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  CartesianGrid,
-  Area,
-} from "recharts";
+  Legend
+} from 'recharts';
 
 const data = [
-  { name: "Jan", api: 90000, success: 70000 },
-  { name: "Feb", api: 80000, success: 72000 },
-  { name: "Mar", api: 60000, success: 78000 },
-  { name: "Apr", api: 65000, success: 90000 },
-  { name: "May", api: 75000, success: 82000 },
-  { name: "Jun", api: 70000, success: 60000 },
-  { name: "Jul", api: 68000, success: 50000 },
-  { name: "Aug", api: 72000, success: 52000 },
-  { name: "Sep", api: 70000, success: 70000 },
-  { name: "Oct", api: 65000, success: 85000 },
-  { name: "Nov", api: 72000, success: 80000 },
-  { name: "Dec", api: 90000, success: 82000 },
+  { month: 'Jan', apiCalls: 1000, successRate: 650 },
+  { month: 'Feb', apiCalls: 850, successRate: 720 },
+  { month: 'Mar', apiCalls: 600, successRate: 900 },
+  { month: 'Apr', apiCalls: 650, successRate: 950 },
+  { month: 'May', apiCalls: 820, successRate: 800 },
+  { month: 'Jun', apiCalls: 910, successRate: 520 },
+  { month: 'Jul', apiCalls: 750, successRate: 480 },
+  { month: 'Aug', apiCalls: 650, successRate: 600 },
+  { month: 'Sept', apiCalls: 720, successRate: 850 },
+  { month: 'Oct', apiCalls: 750, successRate: 880 },
+  { month: 'Nov', apiCalls: 1100, successRate: 800 },
+  { month: 'Dec', apiCalls: 1050, successRate: 820 },
 ];
 
 export default function MetricsChart() {
   return (
     <div className="bg-white rounded-xl p-4 w-full border border-[#E4E7EC]">
-      <h3 className="text-sm font-semibold mb-4">
+      <h3 className="text-base font-bold pb-4">
         Verification Metrics - Last one year
       </h3>
 
       <div className="h-[250px]">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data}>
-            <defs>
-              <linearGradient id="colorSuccess" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopOpacity={0.3} />
-                <stop offset="95%" stopOpacity={0} />
-              </linearGradient>
-            </defs>
+        <AreaChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+          <defs>
+            <linearGradient id="colorApi" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#FDB022" stopOpacity={0.1}/>
+              <stop offset="95%" stopColor="#FDB022" stopOpacity={0}/>
+            </linearGradient>
+            <linearGradient id="colorSuccess" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#49B0C9" stopOpacity={0.1}/>
+              <stop offset="95%" stopColor="#49B0C9" stopOpacity={0}/>
+            </linearGradient>
+          </defs>
 
-            <CartesianGrid strokeDasharray="3 3" vertical={false} />
-            <XAxis dataKey="name" />
+          <XAxis 
+            dataKey="month" 
+            axisLine={false} 
+            tickLine={false} 
+            tick={{ fill: '#363635', fontSize: 10 }} 
+            dy={15}
+          />
+          
+                      <YAxis 
+                          domain={[0, 1200]}
+                          ticks={[100, 300, 500, 700, 900, 1100]}
+            axisLine={false} 
+            tickLine={false} 
+            tick={{ fill: '#363635', fontSize: 10 }}
+            tickFormatter={(value) => value >= 1000 ? `${(value/1000).toFixed(2)}m` : `${value}k`}
+          />
 
-            <Tooltip />
+          <Tooltip 
+            content={({ active, payload }) => {
+              if (active && payload && payload.length) {
+                return (
+                  <div className="bg-black text-white px-3 py-1.5 rounded-lg text-sm font-bold relative">
+                    {payload[0].value} %
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black rotate-45" />
+                  </div>
+                );
+              }
+              return null;
+            }}
+          />
 
-            <Line
-              type="monotone"
-              dataKey="success"
-              stroke="#22C55E"
-              strokeWidth={2}
-              dot={false}
-            />
-            <Line
-              type="monotone"
-              dataKey="api"
-              stroke="#FACC15"
-              strokeWidth={2}
-              dot={false}
-            />
+          <Area
+            type="monotone"
+            dataKey="apiCalls"
+            stroke="#FDB022"
+            strokeWidth={3}
+            fillOpacity={1}
+            fill="url(#colorApi)"
+          />
 
-            <Area
-              type="monotone"
-              dataKey="success"
-              fill="url(#colorSuccess)"
-              stroke="none"
-            />
-          </LineChart>
-        </ResponsiveContainer>
+          <Area
+            type="monotone"
+            dataKey="successRate"
+            stroke="#49B0C9"
+            strokeWidth={3}
+            fillOpacity={1}
+            fill="url(#colorSuccess)"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
       </div>
 
-      <div className="flex gap-4 mt-4 text-xs">
-        <div className="flex items-center gap-2">
-          <span className="w-3 h-3 bg-yellow-400 rounded-full"></span>
+      <div className="flex gap-4 pt-7.25 pl-12">
+        <div className="flex items-center gap-3.25 text-[#46446A] text-sm ">
+          <span className="w-3 h-3 bg-[#FFC222] rounded-[2.91px]"></span>
           API Calls
         </div>
-        <div className="flex items-center gap-2">
-          <span className="w-3 h-3 bg-green-500 rounded-full"></span>
+        <div className="flex items-center gap-3.25 text-[#46446A] text-sm">
+          <span className="w-3 h-3 bg-[#48B0C9] rounded-[2.91px]"></span>
           Success Rate
         </div>
       </div>

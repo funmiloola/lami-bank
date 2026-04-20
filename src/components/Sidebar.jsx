@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Modal from "./Modal";
 
 export default function Sidebar() {
   const [openSidebar, setOpenSidebar] = useState(false);
+  const [openModal, setOpenModal] = useState(false)
   const location = useLocation();
   return (
     <div className="bg-white md:bg-[#101928] font-sans h-screen pt-8">
@@ -16,7 +18,7 @@ export default function Sidebar() {
       <div
         className={`${
           openSidebar
-            ? "fixed z-10 top-0 left-0 w-[60%] shadow-lg px-3 bg-[#101928] inset-0"
+            ? "fixed z-10 top-0 left-0 w-[60%] shadow-lg px-3 bg-[#101928]"
             : "hidden md:block md:h-full"
         }`}
       >
@@ -74,9 +76,12 @@ export default function Sidebar() {
                 Close
               </p>
             </div>
+            <button onClick={()=>setOpenModal(true)} className="bg-[#2b5cb3] px-8 py-1 rounded-md text-white cursor-pointer mt-2 hover:bg-[#3673dd]">Logout</button>
           </div>
         </div>
       </div>
+      {openModal &&  <Modal onClick={()=>setOpenModal(false)} />
+      }
     </div>
   );
 }

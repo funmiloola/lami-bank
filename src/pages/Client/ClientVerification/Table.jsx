@@ -49,25 +49,25 @@ export default function Table() {
         </div>
     <div className=" overflow-x-auto pt-4 px-4">
       <table className="w-full text-sm text-left">
-        <thead className="bg-gray-50 text-gray-500 uppercase text-xs tracking-wider">
+        <thead className="bg-gray-50 text-gray-500 uppercase text-sm">
           <tr>
-            <th className="px-6 py-3">Document Type</th>
-            <th className="px-6 py-3">Volume</th>
-            <th className="px-6 py-3">Success Rate</th>
-            <th className="px-6 py-3">Avg. Time</th>
-            <th className="px-6 py-3">Top Failure Reason</th>
+            <th className="px-6 py-3 font-medium">Document Type</th>
+            <th className="px-6 py-3 font-medium">Volume</th>
+            <th className="px-6 py-3 font-medium">Success Rate</th>
+            <th className="px-6 py-3 font-medium">Avg. Time</th>
+            <th className="px-6 py-3 font-medium">Top Failure Reason</th>
           </tr>
         </thead>
 
         <tbody className="divide-y divide-gray-100">
           {data.map((d, index) => (
             <tr key={index} className="hover:bg-gray-50 transition">
-              <td className="px-6 py-4 font-medium text-gray-800">
+              <td className="px-6 py-4  text-gray-600">
                 {d.documentType}
               </td>
               <td className="px-6 py-4 text-gray-600">{d.volume}</td>
               <td className="px-6 py-4 text-gray-600">
-                <span className="font-semibold text-green-600">
+                <span className=" text-gray-600">
                   {d.successRate}
                 </span>
               </td>

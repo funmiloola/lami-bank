@@ -7,11 +7,11 @@ const cards = [
   },
 ];
 const results = [
-  { text: "✓", match: "BVN Data Matched" },
-  { text: "✕", match: "ID Document Invalid", span: "VIN does not exist" },
-  { text: "✓", match: "Address Proof Successful" },
-  { text: "✓", match: "Liveness Check Passed" },
-  { text: "✓", match: "Signature Update  Successful" },
+  { text: "/✓.svg", match: "BVN Data Matched" },
+  { text: "/✕.svg", match: "ID Document Invalid", span: "VIN does not exist" },
+  { text:  "/✓.svg", match: "Address Proof Successful" },
+  { text:  "/✓.svg", match: "Liveness Check Passed" },
+  { text:  "/✓.svg", match: "Signature Update  Successful" },
 ];
 export default function Card() {
   return (
@@ -43,12 +43,10 @@ export default function Card() {
             </h2>
             <ul className="flex flex-col justify-center  gap-4.5 pt-4">
               {results.map((r, index) => (
-                <li className="flex gap-2 items-center">
-                  <p
-                    className={` px-2.75 py-1.5 rounded-full ${r.text === "✓" ? "bg-[#DCFCE7] text-[#166534]" : r.text === "✕" ? "bg-[#FEE2E2] text-[#B91C1C]" : ""}`}
-                  >
-                    {r.text}
-                  </p>
+                <li className="flex gap-2 items-center" key={index}>
+                   <img src={r.text}
+                    className={` px-2 py-2 rounded-full ${r.text === "/✓.svg" ? 'bg-[#DCFCE7]':'bg-[#FEE2E2]'}`}
+                  />
                   <div className="flex flex-col gap-0.5 text-[#111827]">
                     {r.match}
                     {r.span && (

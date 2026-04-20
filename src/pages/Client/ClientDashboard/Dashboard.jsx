@@ -57,7 +57,7 @@ export default function Dashboard() {
               </div>
             </div>
           </HeaderSection>
-          <section class="flex flex-col items-center md:items-start lg:flex-row justify-between gap-10 md:gap-6 pt-8">
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 pt-8 font-pro">
             <div>
               <h1 className="text-white font-bold text-[24px] md:text-[32px]">
                 Morning, Amanda
@@ -66,7 +66,7 @@ export default function Dashboard() {
                 Track and manage your client here
               </p>
 
-              <div className="bg-[#45B2C7] flex flex-col md:flex-row items-center gap-6 rounded-[16px] px-[15px] py-[17px]  xl:px-[20px] md:py-[25px] mt-5 md:mt-10">
+              <div className="bg-[#45B2C7] flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-0 justify-between rounded-[16px] px-[15px] py-[17px]  xl:px-[20px] md:py-[25px] mt-5 md:mt-10">
                 <div>
                   <h3 className="text-white font-medium text-base xl:text-lg">
                     All your Clients in One Place
@@ -77,7 +77,7 @@ export default function Dashboard() {
                   </p>
                 </div>
 
-                <button className="bg-white text-[#45B2C7] text-xs py-2 px-3 xl:px-6 rounded-lg cursor-pointer">
+                <button className="bg-white text-[#45B2C7] text-base py-2 px-3 xl:px-6 rounded-lg cursor-pointer">
                   Add New Client
                 </button>
               </div>

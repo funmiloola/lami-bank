@@ -64,14 +64,14 @@ export default function Table() {
       </div>
       <div className="py-4 overflow-x-auto">
         <table className="w-full text-sm">
-          <thead className="text-[#475467] font-medium text-left bg-[#E4E7EC]">
+          <thead className="text-[#475467] uppercase text-left bg-[#F9FAFB]">
             <tr>
-              <th className="py-3 px-6">Applicant</th>
-              <th className="py-3">Reference Number</th>
-              <th className="py-3">BVN</th>
-              <th className="py-3">ID Type</th>
-              <th className="py-3">Status</th>
-              <th className="py-3">Submission Date</th>
+              <th className="py-3 px-6 font-medium  ">Applicant</th>
+              <th className="py-3 font-medium ">Reference Number</th>
+              <th className="py-3 font-medium ">BVN</th>
+              <th className="py-3 font-medium ">ID Type</th>
+              <th className="py-3 font-medium ">Verification Status</th>
+              <th className="py-3 font-medium ">Submission Date</th>
             </tr>
           </thead>
 

@@ -1,3 +1,5 @@
+import Pagination from "../../../components/Pagination";
+
 const clients = [
   {
     name: "Lami Bank",
@@ -89,7 +91,7 @@ export default function Table() {
                   key={index}
                   className="hover:bg-gray-50 border-b border-b-[#E4E7EC]"
                 >
-                  <td className="px-6 py-4 text-blue-500 cursor-pointer">
+                  <td className="px-6 py-4 text-[#45B2C7] cursor-pointer underline">
                     {client.name}
                   </td>
 
@@ -107,8 +109,8 @@ export default function Table() {
                     <span
                       className={`text-xs px-3 py-1 rounded-full ${
                         client.status === "Active"
-                          ? "bg-green-100 text-green-600"
-                          : "bg-red-100 text-red-600"
+                          ?  "bg-[#ECFDF3] text-[#1CA894]"
+                          : "bg-red-50 text-red-700"
                       }`}
                     >
                       {client.status}
@@ -119,6 +121,7 @@ export default function Table() {
             </tbody>
           </table>
         </div>
+        <Pagination/>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@
     --font-sans:'DM Sans',sans-serif;
     --font-inter:'Inter',sans-serif;
      --font-tiempos: 'TiemposHeadline', serif;
+     --font-pro:'SF Pro Display',serif;
     --breakpoint-mid:1000px;
 }
 @font-face {
@@ -11,6 +12,21 @@
     src: url('./assets/fonts/TestTiemposFine-Semibold-BF66457a50f016a.otf')  format("opentype");
     font-weight: 600;
 }
+font-face{
+  font-family: 'SF Pro Display';
+  src:url('./assets/fonts/San Francisco Pro Display/SF-Pro-Display-Bold.otf') format("opentype");
+  font-weight:700
+}
+@font-face{
+  font-family: 'SF Pro Display';
+  src:url('./assets/fonts/San Francisco Pro Display/SF-Pro-Display-Regular.otf') format("opentype");
+  font-weight:400
+} 
+@font-face{
+  font-family: 'SF Pro Display';
+  src:url('./assets/fonts/San Francisco Pro Display/SF-Pro-Display-Medium.otf') format("opentype");
+  font-weight:500
+} 
 .recharts-wrapper:focus {
   outline: none !important;
 }
